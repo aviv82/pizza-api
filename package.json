@@ -4,8 +4,9 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
+    "heroku-postbuild": "npm run build",
     "develop": "strapi develop",
-    "start": "strapi start",
+    "start": "strapi develop",
     "build": "strapi build",
     "strapi": "strapi"
   },
