@@ -13,12 +13,14 @@
   "pluginOptions": {},
   "attributes": {
     "type": {
-      "type": "string",
-      "required": true
-    },
-    "price": {
-      "type": "decimal",
-      "required": true
+      "type": "enumeration",
+      "enum": [
+        "classic",
+        "pan",
+        "cheezy"
+      ],
+      "required": true,
+      "default": "classic"
     }
   }
 }
