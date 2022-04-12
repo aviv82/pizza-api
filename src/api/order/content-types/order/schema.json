@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "orderPrize": {
+      "type": "decimal",
+      "required": true
+    },
+    "orderName": {
+      "type": "string",
+      "required": true
+    },
+    "pizzas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pizza.pizza",
+      "mappedBy": "order"
+    }
+  }
+}

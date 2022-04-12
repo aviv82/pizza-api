@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sizes",
+  "info": {
+    "singularName": "size",
+    "pluralName": "sizes",
+    "displayName": "Size",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "required": true,
+      "default": "medium"
+    },
+    "sizePrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "pizzas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pizza.pizza",
+      "mappedBy": "size"
+    }
+  }
+}
