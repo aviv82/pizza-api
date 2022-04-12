@@ -23,10 +23,6 @@
       "relation": "oneToOne",
       "target": "api::dough.dough"
     },
-    "pizzaPrice": {
-      "type": "decimal",
-      "required": true
-    },
     "toppings": {
       "type": "relation",
       "relation": "oneToMany",

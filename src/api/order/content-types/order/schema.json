@@ -12,10 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "orderPrize": {
-      "type": "decimal",
-      "required": true
-    },
     "orderName": {
       "type": "string",
       "required": true
