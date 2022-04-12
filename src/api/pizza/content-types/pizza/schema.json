@@ -29,9 +29,9 @@
       "target": "api::topping.topping",
       "mappedBy": "pizza"
     },
-    "order": {
+    "orders": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::order.order",
       "inversedBy": "pizzas"
     }
