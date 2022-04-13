@@ -41,6 +41,5 @@
       "target": "api::pizza.pizza",
       "inversedBy": "toppings"
     }
-    
   }
 }
