@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "toppings",
+  "info": {
+    "singularName": "topping",
+    "pluralName": "toppings",
+    "displayName": "Topping"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "toppingName": {
+      "type": "string",
+      "required": true
+    },
+    "toppingPrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "spicyLevel": {
+      "type": "enumeration",
+      "enum": [
+        "not spicy at all",
+        "a little spicy",
+        "medium spicy",
+        "very spicy"
+      ],
+      "default": "not spicy at all",
+      "required": true
+    },
+    "vegan": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "pizza": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pizza.pizza",
+      "inversedBy": "toppings"
+    }
+  }
+}

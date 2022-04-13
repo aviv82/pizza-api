@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pizzas",
+  "info": {
+    "singularName": "pizza",
+    "pluralName": "pizzas",
+    "displayName": "Pizza",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "size": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::size.size",
+      "inversedBy": "pizzas"
+    },
+    "dough": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dough.dough"
+    },
+    "toppings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::topping.topping",
+      "mappedBy": "pizza"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::order.order",
+      "inversedBy": "pizzas"
+    }
+  }
+}

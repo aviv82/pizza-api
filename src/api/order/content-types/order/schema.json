@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pizzas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::pizza.pizza",
+      "mappedBy": "orders"
+    },
+    "orderName": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
