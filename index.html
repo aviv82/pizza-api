@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/style/style.css" />
+    <title>Pizza app</title>
+</head>
+
+<body>
+
+    <div id="container">
+        <h1>Buy my pizza</h1>
+
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima, recusandae earum animi illum fugit, iure
+            neque iste amet quia dolorum quidem vel beatae necessitatibus hic quod voluptas quos, praesentium esse?</p>
+
+        <form action="">
+
+            <label for="size-select">Choose a size:</label>
+            <select name="size" id="size-select">
+                <option value="">--Please choose an option--</option>
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select>
+
+            <label for="dough-select">Choose a dough:</label>
+            <select name="dough" id="doug-select">
+                <option value="">--Please choose an option--</option>
+                <option value="pan">Pan</option>
+                <option value="classic">Classic</option>
+                <option value="cheezy">CheezyCrust</option>
+            </select>
+
+
+            <div id="toppings">
+
+                <ul>
+                    <li>
+                        <input type="checkbox" id="topping" name="scales" checked>
+                        <label for="scales">Topping</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="topping" name="scales" checked>
+                        <label for="scales">Topping</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="topping" name="scales" checked>
+                        <label for="scales">Topping</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="topping" name="scales" checked>
+                        <label for="scales">Topping</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="topping" name="scales" checked>
+                        <label for="scales">Topping</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="topping" name="scales" checked>
+                        <label for="scales">Topping</label>
+                    </li>
+
+                </ul>
+            </div>
+
+            <input type="button" value="Send order" id="order-button">
+
+        </form>
+
+    </div>
+
+    <script type="module" src="./public/script/index.js"></script>
+</body>
+
+</html>
