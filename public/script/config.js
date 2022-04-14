@@ -1,1 +1,1 @@
-export const ORIGIN = "http://localhost:1337/api/doughs";
+export const ORIGIN = "http://localhost:1337/api/pizzas";
