@@ -1,4 +1,4 @@
 
 
 
-export const ORIGIN = "https://localhost:1337/api/doughs";
+export const ORIGIN = "http://localhost:1337/api/doughs";
