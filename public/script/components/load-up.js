@@ -52,6 +52,8 @@ export const loadUp = async () => {
     const topName = topData.data[i].attributes.toppingName;
     const topInput = document.createElement("input");
     topInput.type = "checkbox";
+    // Alina: add class name to checkbox
+    topInput.className = "fav-toppings";
     topInput.id = `${topName}`;
     const topLabel = document.createElement("label");
     topLabel.setAttribute("for", `${topName}`);
