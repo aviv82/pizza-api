@@ -16,7 +16,8 @@ body {
 }
 
 .header {
-  padding: 40px;
+  padding-inline: 40px;
+  padding-block: 100px;
 }
 
 #container {
@@ -24,8 +25,38 @@ body {
   background-color: white;
 }
 
+.number-container {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.number-div {
+  align-self: center;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.odd {
+  background-color: white;
+  border: solid 6px #fbc9be;
+}
+
+.even {
+  background-color: #fbc9be;
+  border: solid 6px white;
+}
+
 .size-content-container {
-  padding: 40px;
+  position: relative;
+  padding-inline: 40px;
+  padding-block: 80px;
   background-color: #fbc9be;
 }
 
@@ -48,7 +79,9 @@ body {
 }
 
 .dough-content-container {
-  padding: 40px;
+  position: relative;
+  padding-inline: 40px;
+  padding-block: 80px;
   background-color: white;
 }
 
@@ -70,7 +103,9 @@ body {
 }
 
 .topping-content-container {
-  padding: 40px;
+  position: relative;
+  padding-inline: 40px;
+  padding-block: 80px;
   background-color: #fbc9be;
 }
 
@@ -93,7 +128,9 @@ body {
 }
 
 .customer-content-container {
-  padding: 40px;
+  position: relative;
+  padding-inline: 40px;
+  padding-block: 80px;
   background-color: white;
 }
 
@@ -129,7 +166,9 @@ input {
 }
 
 .submit-container {
-  padding: 40px;
+    position: relative;
+  padding-inline: 40px;
+  padding-block: 80px;
   background-color: #fbc9be;
 }
 .submit-button {

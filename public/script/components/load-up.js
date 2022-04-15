@@ -31,8 +31,13 @@ export const loadUp = async () => {
   const orderTitleDiv = document.createElement("h2");
   orderTitleDiv.innerHTML = "How hungry are you?";
 
+  const numberOddOneDiv = document.createElement("div");
+  numberOddOneDiv.classList.add("number-container", "odd");
+  numberOddOneDiv.innerHTML = "<p class='number-div'>1</p>";
+
   const sizeOutput = document.createElement("div");
 
+  sizeContainer.appendChild(numberOddOneDiv);
   sizeContainer.appendChild(orderTitleDiv);
   sizeContainer.appendChild(sizeDiv);
   sizeContainer.appendChild(sizeOutput);
@@ -84,6 +89,11 @@ export const loadUp = async () => {
 
   const doughOutput = document.createElement("div");
 
+  const numberEvenTwoDiv = document.createElement("div");
+  numberEvenTwoDiv.classList.add("number-container", "even");
+  numberEvenTwoDiv.innerHTML = "<p class='number-div'>2</p>";
+
+  doughContainer.appendChild(numberEvenTwoDiv);
   doughContainer.appendChild(doughTitleDiv);
   doughContainer.appendChild(doughDiv);
   doughContainer.appendChild(doughOutput);
@@ -104,8 +114,6 @@ export const loadUp = async () => {
       doughOutput.innerHTML = `<p class="choice">Your choice: ${doughChoice}</p>`;
     });
   });
-
-
 
   const toppingSearch = "toppings";
   const toppingData = await bigFetch(toppingSearch);
@@ -130,11 +138,16 @@ export const loadUp = async () => {
   const toppingDiv = document.createElement("div");
   toppingDiv.id = "topping-select-container";
 
+  const numberOddThreeDiv = document.createElement("div");
+  numberOddThreeDiv.classList.add("number-container", "odd");
+  numberOddThreeDiv.innerHTML = "<p class='number-div'>3</p>";
+
   const toppingTitleDiv = document.createElement("h2");
   toppingTitleDiv.innerHTML = "Over the top toppings:";
 
   const toppingOutput = document.createElement("div");
 
+  toppingContainer.appendChild(numberOddThreeDiv);
   toppingContainer.appendChild(toppingTitleDiv);
   toppingContainer.appendChild(toppingDiv);
   toppingContainer.appendChild(toppingOutput);
@@ -155,11 +168,12 @@ export const loadUp = async () => {
       // console.log(sizeEl.dataset.size);
       toppingChoice = toppingEl.dataset.topping;
       toppingArray.push(toppingChoice);
-      console.log(toppingArray)
-      toppingOutput.innerHTML = `<p class="choice">Your choice: ${toppingArray.join(', ')}</p>`;
+      console.log(toppingArray);
+      toppingOutput.innerHTML = `<p class="choice">Your choice: ${toppingArray.join(
+        ", "
+      )}</p>`;
     });
   });
-
 
   const customerContainer = document.createElement("div");
   customerContainer.classList.add("customer-content-container");
@@ -167,11 +181,16 @@ export const loadUp = async () => {
   const customerDiv = document.createElement("div");
   customerDiv.id = "customer-select-container";
 
+  const numberEvenFourDiv = document.createElement("div");
+  numberEvenFourDiv.classList.add("number-container", "even");
+  numberEvenFourDiv.innerHTML = "<p class='number-div'>4</p>";
+
   const customerTitleDiv = document.createElement("h2");
   customerTitleDiv.innerHTML = "Tell us who you are and come enjoy your pizza:";
 
   const customerOutput = document.createElement("div");
 
+  customerContainer.appendChild(numberEvenFourDiv);
   customerContainer.appendChild(customerTitleDiv);
   customerContainer.appendChild(customerDiv);
   customerContainer.appendChild(customerOutput);
@@ -184,34 +203,22 @@ export const loadUp = async () => {
   root.appendChild(customerContainer);
 
 
+  const numberOddFiveDiv = document.createElement("div");
+  numberOddFiveDiv.classList.add("number-container", "odd");
+  numberOddFiveDiv.innerHTML = "<p class='number-div'>5</p>";
+
+  document.querySelector(".submit-container").appendChild(numberOddFiveDiv);
+
+
   document.getElementById("order-button").addEventListener("click", () => {
     console.log("click");
     let pizza = {
       size: sizeChoice,
       type: doughChoice,
       toppings: toppingArray,
-      userName: customerInput.value
+      userName: customerInput.value,
     };
     console.log(pizza);
   });
 
-  // const topSearch = "toppings";
-  // const topList = document.createElement("ul");
-  // topList.id = "toppings-list";
-  // const topData = await bigFetch(topSearch);
-  // let topCheckboxes = "";
-
-  // topData.data.forEach(async (topping) => {
-  //   const topName = topping.attributes.toppingName;
-  //   topCheckboxes += `
-  //   <input type="checkbox" id="${topName}" name="${topName}"
-  // checked>
-  // <label for="${topName}">${topName}</label>
-  // `;
-  // });
-
-  // topList.innerHTML = topCheckboxes;
-  // userForm.appendChild(topList);
-
-  // root.appendChild(userForm);
 };
