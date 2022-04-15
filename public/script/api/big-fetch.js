@@ -7,10 +7,10 @@
 
 import { ORIGIN } from "../config.js";
 
-export const bigFetch = async () => {
-  const populate = "?populate=*";
+export const bigFetch = async (search) => {
+  // const search = "?populate=*";
 
-  const URL = `${ORIGIN}${populate}`;
+  const URL = `${ORIGIN}${search}`;
   const encodeURL = encodeURI(URL);
   const searchPromise = await fetch(encodeURL);
   if (!searchPromise.ok) {
