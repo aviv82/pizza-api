@@ -7,9 +7,6 @@ export const loadUp = async () => {
   userForm.id = "user-form";
   const sizeSearch = "sizes";
   const sizeData = await bigFetch(sizeSearch);
-  console.log(sizeData);
-  console.log(sizeData.data[1].attributes.size);
-  console.log(sizeData.data.length);
 
   const sizeSelect = document.createElement("select");
   sizeSelect.name = "size";
@@ -27,9 +24,6 @@ export const loadUp = async () => {
 
   const doughSearch = "doughs";
   const doughData = await bigFetch(doughSearch);
-  console.log(doughData);
-  console.log(doughData.data[1].attributes.type);
-  console.log(doughData.data.length);
 
   const doughSelect = document.createElement("select");
   doughSelect.name = "dough";
@@ -47,6 +41,27 @@ export const loadUp = async () => {
 
   userForm.insertAdjacentHTML("beforeend", doughFor);
   userForm.appendChild(doughSelect);
+
+  const topSearch = "toppings";
+  const topData = await bigFetch(topSearch);
+  const topList = document.createElement("ul");
+  topList.id = "topping-list";
+  topList.innerHTML = "Choose your favorite toppings:";
+  for (let i = 0; i < topData.data.length; i++) {
+    const topItem = document.createElement("li");
+    const topName = topData.data[i].attributes.toppingName;
+    const topInput = document.createElement("input");
+    topInput.type = "checkbox";
+    topInput.id = `${topName}`;
+    const topLabel = document.createElement("label");
+    topLabel.setAttribute("for", `${topName}`);
+    topLabel.innerHTML = `${topName}`;
+    topItem.appendChild(topInput);
+    topItem.appendChild(topLabel);
+    topList.appendChild(topItem);
+  }
+
+  userForm.appendChild(topList);
 
   root.appendChild(userForm);
 };
