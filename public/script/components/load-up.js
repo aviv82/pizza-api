@@ -29,7 +29,7 @@ export const loadUp = async () => {
   sizeDiv.id = "size-select-container";
 
   const orderTitleDiv = document.createElement("h2");
-  orderTitleDiv.innerHTML = "Please pick a size:";
+  orderTitleDiv.innerHTML = "How hungry are you?";
 
   const sizeOutput = document.createElement("div");
 
@@ -42,7 +42,7 @@ export const loadUp = async () => {
   sizeDiv.innerHTML = sizeItems;
 
   const sizeQuery = [...document.querySelectorAll("div.size-divs")];
-  console.log(sizeQuery);
+  // console.log(sizeQuery);
 
   let sizeChoice = "";
   sizeQuery.forEach((sizeEl) => {
@@ -50,7 +50,7 @@ export const loadUp = async () => {
       console.log("clicked");
       // console.log(sizeEl.dataset.size);
       sizeChoice = sizeEl.dataset.size;
-      sizeOutput.innerHTML = sizeChoice;
+      sizeOutput.innerHTML = `<p class="choice">Your choice: ${sizeChoice}</p>`;
     });
   });
 
@@ -80,7 +80,7 @@ export const loadUp = async () => {
   doughDiv.id = "dough-select-container";
 
   const doughTitleDiv = document.createElement("h2");
-  doughTitleDiv.innerHTML = "Please pick a dough:";
+  doughTitleDiv.innerHTML = "What about the dough tho?";
 
   const doughOutput = document.createElement("div");
 
@@ -93,7 +93,7 @@ export const loadUp = async () => {
   doughDiv.innerHTML = doughItems;
 
   const doughQuery = [...document.querySelectorAll("div.dough-divs")];
-  console.log(sizeQuery);
+  // console.log(sizeQuery);
 
   let doughChoice = "";
   doughQuery.forEach((doughEl) => {
@@ -101,20 +101,99 @@ export const loadUp = async () => {
       console.log("clicked");
       // console.log(sizeEl.dataset.size);
       doughChoice = doughEl.dataset.dough;
-      doughOutput.innerHTML = doughChoice;
+      doughOutput.innerHTML = `<p class="choice">Your choice: ${doughChoice}</p>`;
     });
   });
 
 
-  document.getElementById("order-button").addEventListener("click", () =>
-{
-  console.log("click");
-  let pizza = {
-    size: sizeChoice,
-    type: doughChoice,
-  };
-  console.log(pizza);
-});
+
+  const toppingSearch = "toppings";
+  const toppingData = await bigFetch(toppingSearch);
+  console.log(toppingData);
+
+  let toppingItems = "";
+
+  toppingData.data.forEach(async (topping) => {
+    const toppingType = topping.attributes.toppingName;
+    // const doughDescription = dough.attributes.description;
+    toppingItems += `
+
+    <div class="topping-divs" id="${toppingType}-container" data-topping="${toppingType}">
+      <h3>${toppingType}</h3>
+    </div> 
+    `;
+  });
+
+  const toppingContainer = document.createElement("div");
+  toppingContainer.classList.add("topping-content-container");
+
+  const toppingDiv = document.createElement("div");
+  toppingDiv.id = "topping-select-container";
+
+  const toppingTitleDiv = document.createElement("h2");
+  toppingTitleDiv.innerHTML = "Over the top toppings:";
+
+  const toppingOutput = document.createElement("div");
+
+  toppingContainer.appendChild(toppingTitleDiv);
+  toppingContainer.appendChild(toppingDiv);
+  toppingContainer.appendChild(toppingOutput);
+
+  root.appendChild(toppingContainer);
+
+  toppingDiv.innerHTML = toppingItems;
+
+  const toppingQuery = [...document.querySelectorAll("div.topping-divs")];
+  // console.log(sizeQuery);
+
+  let toppingChoice = "";
+  let toppingArray = [];
+
+  toppingQuery.forEach((toppingEl) => {
+    toppingEl.addEventListener("click", () => {
+      console.log("clicked");
+      // console.log(sizeEl.dataset.size);
+      toppingChoice = toppingEl.dataset.topping;
+      toppingArray.push(toppingChoice);
+      console.log(toppingArray)
+      toppingOutput.innerHTML = `<p class="choice">Your choice: ${toppingArray.join(', ')}</p>`;
+    });
+  });
+
+
+  const customerContainer = document.createElement("div");
+  customerContainer.classList.add("customer-content-container");
+
+  const customerDiv = document.createElement("div");
+  customerDiv.id = "customer-select-container";
+
+  const customerTitleDiv = document.createElement("h2");
+  customerTitleDiv.innerHTML = "Tell us who you are and come enjoy your pizza:";
+
+  const customerOutput = document.createElement("div");
+
+  customerContainer.appendChild(customerTitleDiv);
+  customerContainer.appendChild(customerDiv);
+  customerContainer.appendChild(customerOutput);
+
+  const customerInput = document.createElement("input");
+  customerInput.setAttribute("type", "text");
+  customerInput.classList.add("customer-input");
+  customerDiv.appendChild(customerInput);
+
+  root.appendChild(customerContainer);
+
+
+  document.getElementById("order-button").addEventListener("click", () => {
+    console.log("click");
+    let pizza = {
+      size: sizeChoice,
+      type: doughChoice,
+      toppings: toppingArray,
+      userName: customerInput.value
+    };
+    console.log(pizza);
+  });
 
   // const topSearch = "toppings";
   // const topList = document.createElement("ul");
@@ -136,9 +215,3 @@ export const loadUp = async () => {
 
   // root.appendChild(userForm);
 };
-
-
-
-
-
-
