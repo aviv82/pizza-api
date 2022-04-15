@@ -24,6 +24,10 @@
     },
     "doughPrice": {
       "type": "decimal"
+    },
+    "description": {
+      "type": "string",
+      "default": "Please choose your dough:"
     }
   }
 }
