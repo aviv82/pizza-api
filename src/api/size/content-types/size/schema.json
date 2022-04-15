@@ -17,7 +17,8 @@
       "enum": [
         "small",
         "medium",
-        "large"
+        "large",
+        "xl"
       ],
       "required": true,
       "default": "medium"
