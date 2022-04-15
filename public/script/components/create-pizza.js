@@ -22,11 +22,12 @@ export const createPizza = async (size, dough, toppings = []) => {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     headers: {
       "Content-Type": "application/json",
+    // 'Content-type': 'text/plain', //not work
       "Authorization": `Bearer ${jwt}`,
     },
     body: JSON.stringify(body),
   });
-  console.log("response.json:");
+  console.log("createPizza:");
   return response.json();
 };
 

@@ -22,6 +22,7 @@ export const createOrder = async (pizzaId) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+    // 'Content-type': 'text/plain', //not work
       Authorization: `Bearer ${jwt}`,
     },
     body: JSON.stringify(body),

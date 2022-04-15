@@ -20,6 +20,7 @@ export const orderHandler = async (event) => {
   const toppings = Array.from(document.getElementsByClassName("fav-toppings"))
     .filter((ele) => ele.checked)
     .map((item) => item.id);
+  console.log("toppings:", toppings);
   // post pizza data in strapi
   const myPizza = await createPizza(size, dough, toppings);
   const pizzaId = await myPizza.id;
