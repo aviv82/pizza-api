@@ -32,6 +32,10 @@
       "relation": "oneToMany",
       "target": "api::pizza.pizza",
       "mappedBy": "size"
+    },
+    "description": {
+      "type": "string",
+      "default": "Please choose your size:"
     }
   }
 }

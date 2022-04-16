@@ -2,15 +2,24 @@ import { ORIGIN, jwt } from "../config.js";
 import { createPizza } from "../components/create-pizza.js";
 import { createOrder } from "../components/create-order.js";
 import { bigFetch } from "../api/big-fetch.js";
+import { userInputData } from '../../data.js'; // Alina: data.js store tmp user input.
 
 export const orderHandler = async (event) => {
   // collect user input
+  /*  version 1: works 
+  // for index.html version 1(aviv: using form section collect user input)  
   // event.preventDefault(); //Alina: stop the form submitting, if put #order-button into form element, we'll need it, for backup.
   const size = document.getElementById("size-select").value;
   const dough = document.getElementById("dough-select").value;
   const toppings = Array.from(document.getElementsByClassName("fav-toppings"))
     .filter((ele) => ele.checked)
     .map((item) => item.id);
+*/
+
+/* version 2: for index.html version 2 (Mick: using div section collect user input)*/
+const size = userInputData.sizeId;
+const dough = userInputData.doughId;
+const toppings = userInputData.toppingIds;
 
   // create the pizza data in strapi
   const myPizza = await createPizza(size, dough, toppings);
@@ -18,6 +27,7 @@ export const orderHandler = async (event) => {
   // get the pizza data in strapi
   const pizzaSearch = "pizzas?sort=id:desc&populate=*";
   const getMyPizza = await bigFetch(pizzaSearch);
+  console.log("getMyPizza:", getMyPizza) //
   const myPizzaId = getMyPizza.data[0].id;
 
   // create order data in strapi

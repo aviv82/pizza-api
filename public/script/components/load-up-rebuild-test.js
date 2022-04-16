@@ -1,26 +1,26 @@
 // import { from } from "form-data.js";
 import { bigFetch } from "../api/big-fetch.js";
 // import { pizzaHandler } from "../handlers/pizza-handler.js";
-import { userInputData } from "../../data.js"; // Alina: data.js store tmp user input
 
 export const loadUp = async () => {
   const root = document.getElementById("content-container");
 
   const sizeSearch = "sizes";
   const sizeData = await bigFetch(sizeSearch);
-  console.log(sizeData);
+//   console.log("sizeData:",sizeData);
 
   let sizeItems = "";
 
   sizeData.data.forEach(async (size) => {
     const sizeName = size.attributes.size;
-    const sizeId = size.id; // Alina: added var sizeId
+    const sizeId = size.id; // a
+    // console.log("sizeId:",sizeId);
     const description = size.attributes.description;
     sizeItems += `
     <div class="size-divs" id="${sizeName}-container" data-size="${sizeName}" data-size-id="${sizeId}">
       <h3>${description}</h3>
     </div> 
-    `; // Alina: added data-size-id="${sizeId}"
+    `; // a
   });
 
   const sizeContainer = document.createElement("div");
@@ -47,39 +47,40 @@ export const loadUp = async () => {
 
   sizeDiv.innerHTML = sizeItems;
 
-  const sizeQuery = [...document.querySelectorAll("div.size-divs")];
-  // console.log(sizeQuery);
+  const sizeQuery = [...document.querySelectorAll("div.size-divs")]; // cool
+//   console.log("sizeQuery",sizeQuery);
 
   let sizeChoice = "";
-  let choseSizeId = ''; // Alina: added var choseSizeId
+  let choseSizeId = ''; // a
   sizeQuery.forEach((sizeEl) => {
     sizeEl.addEventListener("click", () => {
-      console.log("clicked");
-      // console.log(sizeEl.dataset.size);
+    //   console.log("clicked");
+    //   console.log("sizeChoice:",sizeEl.dataset.size);
+      
       sizeChoice = sizeEl.dataset.size;
-      choseSizeId= sizeEl.dataset.sizeId; // Alina: added line
-      userInputData.sizeId =  choseSizeId; // Alina: store sizeId in data.js
+      choseSizeId= sizeEl.dataset.sizeId; //a 
+    //   console.log("choseSizeId:", choseSizeId);
       sizeOutput.innerHTML = `<p class="choice">Your choice: ${sizeChoice}</p>`;
     });
   });
 
-  // console.log(sizeChoice);
+//   console.log(sizeChoice);
 
   const doughSearch = "doughs";
   const doughData = await bigFetch(doughSearch);
-  console.log(doughData);
+//   console.log(doughData);
 
   let doughItems = "";
 
   doughData.data.forEach(async (dough) => {
     const doughType = dough.attributes.type;
-    const doughId = dough.id; // Alina: added var doughId
+    const doughId = dough.id; // a
     const doughDescription = dough.attributes.description;
     doughItems += `
     <div class="dough-divs" id="${doughType}-container" data-dough="${doughType}" data-dough-id="${doughId}">
       <h3>${doughDescription}</h3>
     </div> 
-    `; // Alina: added data-dough-id="${doughId}"
+    `; // a
   });
 
   const doughContainer = document.createElement("div");
@@ -107,36 +108,37 @@ export const loadUp = async () => {
   doughDiv.innerHTML = doughItems;
 
   const doughQuery = [...document.querySelectorAll("div.dough-divs")];
-  // console.log(sizeQuery);
+//   console.log(sizeQuery);
 
   let doughChoice = "";
-  let choseDoughId = ''; // Alina: added var choseDoughId
+  let choseDoughId = ''; // a
   doughQuery.forEach((doughEl) => {
     doughEl.addEventListener("click", () => {
-      console.log("clicked");
+    //   console.log("clicked");
       // console.log(sizeEl.dataset.size);
       doughChoice = doughEl.dataset.dough;
-      choseDoughId = doughEl.dataset.doughId; // Alina: added line
-      userInputData.doughId = choseDoughId; // Alina: store doughId in data.js
+      choseDoughId = doughEl.dataset.doughId; // a
+    //   console.log('choseDoughId',choseDoughId);
+    //   console.log('doughChoice',doughChoice);
       doughOutput.innerHTML = `<p class="choice">Your choice: ${doughChoice}</p>`;
     });
   });
 
   const toppingSearch = "toppings";
   const toppingData = await bigFetch(toppingSearch);
-  console.log(toppingData);
+//   console.log(toppingData);
 
   let toppingItems = "";
 
   toppingData.data.forEach(async (topping) => {
     const toppingType = topping.attributes.toppingName;
-    const toppingId = topping.id; // Alina: added var toppingId
+    const toppingId = topping.id; // a
     // const doughDescription = dough.attributes.description;
     toppingItems += `
     <div class="topping-divs" id="${toppingType}-container" data-topping="${toppingType}" data-topping-id="${toppingId}">
       <h3>${toppingType}</h3>
     </div> 
-    `; // Alina: added data-topping-id="${toppingId}"
+    `; // a
   });
 
   const toppingContainer = document.createElement("div");
@@ -164,28 +166,29 @@ export const loadUp = async () => {
   toppingDiv.innerHTML = toppingItems;
 
   const toppingQuery = [...document.querySelectorAll("div.topping-divs")];
-  // console.log(sizeQuery);
+//   console.log(sizeQuery);
 
   let toppingChoice = "";
   let toppingArray = [];
-  let toppingId = ''; // Alina: added toppingId
-  let toppingIdArray = []; // Alina: added toppingIdArray
+  let toppingId = ''; // a
+  let toppingIdArray = [];
 
   toppingQuery.forEach((toppingEl) => {
     toppingEl.addEventListener("click", () => {
-      console.log("clicked");
+    //   console.log("clicked");
       // console.log(sizeEl.dataset.size);
       toppingChoice = toppingEl.dataset.topping;
-      toppingId = toppingEl.dataset.toppingId; // Alina: added line
+    //   console.log("toppingEl.dataset:", toppingEl.dataset);
+      toppingId = toppingEl.dataset.toppingId; // a
       toppingArray.push(toppingChoice);
-      toppingIdArray.push(toppingId); // Alina: added line
-      // console.log(toppingArray);
+      toppingIdArray.push(toppingId); // a
+    //   console.log("toppingArray:", toppingArray);
+    //   console.log("toppingIdArray:", toppingIdArray); // a
       toppingOutput.innerHTML = `<p class="choice">Your choice: ${toppingArray.join(
         ", "
       )}</p>`;
     });
   });
-  userInputData.toppingIds = toppingIdArray; // Alina: store toppingIds in data.js
 
   const customerContainer = document.createElement("div");
   customerContainer.classList.add("customer-content-container");
@@ -220,16 +223,15 @@ export const loadUp = async () => {
 
   document.querySelector(".submit-container").appendChild(numberOddFiveDiv);
 
-/*   
-// Alina: code snippet from Mick, not need any more, but I'll just keep it here.
-document.getElementById("order-button").addEventListener("click", () => {
-    console.log("click");
-    let pizza = {
-      size: sizeChoice,
-      type: doughChoice,
-      toppings: toppingArray,
-      userName: customerInput.value,
-    };
-    console.log(pizza);
-  }); */
+  // document.getElementById("order-button").addEventListener("click", () => {
+  //   console.log("click");
+  //   let pizza = {
+  //     size: sizeChoice,
+  //     type: doughChoice,
+  //     toppings: toppingArray,
+  //     userName: customerInput.value,
+  //   };
+  //   console.log(pizza);
+  // });
 };
+
