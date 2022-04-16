@@ -1,68 +1,24 @@
 import { ORIGIN, jwt } from "../config.js";
 
-// const ORIGIN = "http://localhost:1337/api/";
-
 export const createOrder = async (pizzaId) => {
-  /* 
-    /api/doughs/:id
-    /api/orders/:id
-    /api/pizzas/:id
-    /api/sizes/:id
-    /api/toppings/:id
-    */
-  const path = `orders`;
+  // debugger;
+  const path = `orders`; 
   const body = {
     data: {
-      name: `${Date.now()}`,
-      pizza: { id: pizzaId },
+      name: `order at ${Date.now()}`, //way 1: name with date, works
+      // name: "myOrder name from js", // way 2: name with words, works
+      description: "this is a order description form js",
+      pizzas: { id: pizzaId },
     },
   };
-  const url = `${ORIGIN}${path}`;
+  const url = encodeURI(`${ORIGIN}${path}`);
   const response = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-    // 'Content-type': 'text/plain', //not work
       Authorization: `Bearer ${jwt}`,
     },
     body: JSON.stringify(body),
   });
-  console.log("order data:");
   return response.json();
 };
-
-/* 
-async function createNewProduct(
-  name,
-  description,
-  price,
-  discountId,
-  categoryId,
-  outOfStock,
-) {
-  const path = `products/`; 
-  const body = {
-    data: {
-      name: name,
-      description: description,
-      price: price,
-      category: {id:categoryId},
-      outOfStock: outOfStock,
-      discount: {id:discountId}
-    },
-  };
-  const url = `http://localhost:1337/api/${path}`;
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
-  console.log("my product created")
-  return response.json();
-}
-const description = 'this is a cool description created by Alina.'
-// createNewProduct(name, description, price, discountId, categoryId, outOfStock);
-createNewProduct('new name', description, 250, 2, 1, false);
- */

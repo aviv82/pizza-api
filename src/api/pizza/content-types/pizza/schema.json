@@ -34,6 +34,18 @@
       "relation": "manyToMany",
       "target": "api::order.order",
       "inversedBy": "pizzas"
+    },
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "outOfStock": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }
