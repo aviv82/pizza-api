@@ -2,7 +2,7 @@ import { ORIGIN, jwt } from "../config.js";
 
 export const createOrder = async (pizzaId) => {
   // debugger;
-  const path = `orders`; 
+  const path = `orders`;
   const body = {
     data: {
       name: `order at ${Date.now()}`, //way 1: name with date, works
