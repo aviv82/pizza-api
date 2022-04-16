@@ -15,7 +15,6 @@ export const loadUp = async () => {
     const sizeName = size.attributes.size;
     const description = size.attributes.description;
     sizeItems += `
-
     <div class="size-divs" id="${sizeName}-container" data-size="${sizeName}">
       <h3>${description}</h3>
     </div> 
@@ -71,7 +70,6 @@ export const loadUp = async () => {
     const doughType = dough.attributes.type;
     const doughDescription = dough.attributes.description;
     doughItems += `
-
     <div class="dough-divs" id="${doughType}-container" data-dough="${doughType}">
       <h3>${doughDescription}</h3>
     </div> 
@@ -125,7 +123,6 @@ export const loadUp = async () => {
     const toppingType = topping.attributes.toppingName;
     // const doughDescription = dough.attributes.description;
     toppingItems += `
-
     <div class="topping-divs" id="${toppingType}-container" data-topping="${toppingType}">
       <h3>${toppingType}</h3>
     </div> 
@@ -202,13 +199,11 @@ export const loadUp = async () => {
 
   root.appendChild(customerContainer);
 
-
   const numberOddFiveDiv = document.createElement("div");
   numberOddFiveDiv.classList.add("number-container", "odd");
   numberOddFiveDiv.innerHTML = "<p class='number-div'>5</p>";
 
   document.querySelector(".submit-container").appendChild(numberOddFiveDiv);
-
 
   document.getElementById("order-button").addEventListener("click", () => {
     console.log("click");
@@ -220,5 +215,4 @@ export const loadUp = async () => {
     };
     console.log(pizza);
   });
-
 };

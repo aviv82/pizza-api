@@ -17,11 +17,11 @@ body {
 
 .header {
   padding-inline: 40px;
-  padding-block: 100px;
+  padding-block: 160px;
 }
 
 #container {
-  font-size: 15px;
+  font-size: 16px;
   background-color: white;
 }
 
