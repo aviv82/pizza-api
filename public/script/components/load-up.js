@@ -13,9 +13,14 @@ export const loadUp = async () => {
   sizeSelect.id = "size-select";
   sizeSelect.innerHTML = `<option value="">--Please choose an option--</option>`;
   for (let i = 0; i < sizeData.data.length; i++) {
+    
     const size = sizeData.data[i].attributes.size;
+    // Alina change size from small, medium, large, xl, to integer
+    const mySize = sizeData.data[i].id;
+    //
+
     const optionEl = document.createElement("option");
-    optionEl.value = `${size}`;
+    optionEl.value = `${mySize}`;
     optionEl.innerHTML = `${size}`;
     sizeSelect.appendChild(optionEl);
   }
@@ -32,8 +37,11 @@ export const loadUp = async () => {
 
   for (let i = 0; i < doughData.data.length; i++) {
     const dough = doughData.data[i].attributes.type;
+    // Alina: change dough value from : classic, cheezy, pan to integer
+    const myDough = doughData.data[i].id;
+
     const optionEl = document.createElement("option");
-    optionEl.value = `${dough}`;
+    optionEl.value = `${myDough}`;
     optionEl.innerHTML = `${dough}`;
     doughSelect.appendChild(optionEl);
   }
@@ -52,7 +60,11 @@ export const loadUp = async () => {
     const topName = topData.data[i].attributes.toppingName;
     const topInput = document.createElement("input");
     topInput.type = "checkbox";
-    topInput.id = `${topName}`;
+    // Alina: add class name to checkbox
+    topInput.className = "fav-toppings";
+    const myId = topData.data[i].id;
+    topInput.id = `${myId}`; // change the id to number
+    
     const topLabel = document.createElement("label");
     topLabel.setAttribute("for", `${topName}`);
     topLabel.innerHTML = `${topName}`;

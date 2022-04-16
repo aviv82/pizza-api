@@ -12,15 +12,18 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "name": {
+      "type": "string",
+      "required": false
+    },
     "pizzas": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::pizza.pizza",
       "mappedBy": "orders"
     },
-    "orderName": {
-      "type": "string",
-      "required": true
+    "description": {
+      "type": "text"
     }
   }
 }
