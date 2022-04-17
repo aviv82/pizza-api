@@ -3,6 +3,7 @@ import { createPizza } from "../components/create-pizza.js";
 import { createOrder } from "../components/create-order.js";
 import { bigFetch } from "../api/big-fetch.js";
 import { userInputData } from '../../data.js'; // Alina: data.js store tmp user input.
+import { loadUp } from '../components/load-up.js';
 
 export const orderHandler = async (event) => {
   // collect user input
@@ -33,10 +34,16 @@ const toppings = userInputData.toppingIds;
   // create order data in strapi
   const myOrder = await createOrder(myPizzaId);
 
-  // get the customized pizza data from strapi and
+  // get the customized pizza data from strapi 
   const orderSearch = "orders?sort=id:desc&populate=*";
   const getMyOrder = await bigFetch(orderSearch);
   // console.log("getMyOrder:", getMyOrder);
+
+  // clean tmp user input in "memory" 
+  Object.keys(userInputData).forEach(key => delete userInputData.key);
+  // clean #content-container and rerender ui
+  document.getElementById("content-container").innerHTML = '';
+  loadUp();
 
   // # todo: render order info to user: will crate at another feature branch
   return getMyOrder;
