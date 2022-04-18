@@ -9,17 +9,22 @@
   </head>
 
   <body>
-    <div id="container">
-      <h1>Buy my pizza</h1>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima,
-        recusandae earum animi illum fugit, iure neque iste amet quia dolorum
-        quidem vel beatae necessitatibus hic quod voluptas quos, praesentium
-        esse?
-      </p>
+    <div class="wrapper">
+      <div class="header">
+        <h1>Welcome to Hack Your Pizza</h1>
+        <p>Please place your order to make a reservation</p>
+      </div>
+      <div id="content-container"></div>
+      <!-- <div class="output-div"></div> -->
+      <div class="submit-container">
+        <input
+          type="button"
+          class="submit-button"
+          value="Send order"
+          id="order-button"
+        />
+      </div>
     </div>
-    <div id="user-input"></div>
-    <input type="button" value="Send order" id="order-button" />
     <script type="module" src="script/index.js"></script>
   </body>
 </html>
